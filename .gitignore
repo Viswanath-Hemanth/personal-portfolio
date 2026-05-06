@@ -10,6 +10,11 @@ pnpm-debug.log*
 # Build output
 dist
 .vite
+.next
+out
+playwright-report
+test-results
+*.tsbuildinfo
 
 # Editor / OS
 .DS_Store
@@ -21,6 +26,7 @@ dist
 .env
 .env.local
 .env.*.local
+.vercel
 
 # npm cache
 .npm
