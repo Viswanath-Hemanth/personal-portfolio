@@ -3,7 +3,20 @@ import { motion } from 'framer-motion'
 import SectionHeading from './SectionHeading.jsx'
 import profile from '../data/profile.json'
 
-function GameCover({ title }) {
+function GameCover({ title, coverImage }) {
+  if (coverImage) {
+    return (
+      <div className="h-full w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 dark:border-slate-800 dark:bg-slate-900">
+        <img
+          src={coverImage}
+          alt={`${title} cover`}
+          loading="lazy"
+          className="h-full w-full object-contain"
+        />
+      </div>
+    )
+  }
+
   return (
     <div className="flex h-full w-full items-center justify-center rounded-2xl border border-slate-200 bg-gradient-to-br from-indigo-500/20 via-transparent to-cyan-500/20 p-4 text-center dark:border-slate-800">
       <div>
@@ -20,7 +33,7 @@ export default function GamerSection() {
   const scrollerRef = useRef(null)
   const [canScroll, setCanScroll] = useState({ left: false, right: true })
 
-  const scrollByAmount = useMemo(() => 320, [])
+  const scrollByAmount = useMemo(() => 220, [])
 
   function updateScrollState() {
     const el = scrollerRef.current
@@ -61,7 +74,7 @@ export default function GamerSection() {
         className="relative"
       >
         <div className="flex items-center justify-between gap-3">
-          <div className="text-sm font-semibold tracking-wider text-slate-500 dark:text-slate-400">Recent games</div>
+          <div className="text-sm font-semibold tracking-wider text-slate-500 dark:text-slate-400">Favorite games</div>
           <div className="flex items-center gap-2">
             <button
               type="button"
@@ -92,9 +105,9 @@ export default function GamerSection() {
             style={{ scrollSnapType: 'x mandatory' }}
           >
             {games.map((g) => (
-              <div key={g.title} className="w-72 shrink-0 snap-start">
-                <div className="h-52">
-                  <GameCover title={g.title} />
+              <div key={g.title} className="w-44 shrink-0 snap-start">
+                <div className="aspect-[2/3]">
+                  <GameCover title={g.title} coverImage={g.coverImage} />
                 </div>
                 <div className="mt-3 text-center text-sm font-semibold text-slate-800 dark:text-slate-100">
                   {g.caption}

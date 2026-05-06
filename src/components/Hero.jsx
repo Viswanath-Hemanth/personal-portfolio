@@ -12,9 +12,8 @@ function getInitialTheme() {
 
 export default function Hero() {
   const hero = profile.hero
-  const resumeHref = profile.assets?.resumeFile
-    ? new URL(profile.assets.resumeFile, import.meta.env.BASE_URL).toString()
-    : new URL('Hemanth_Resume.pdf', import.meta.env.BASE_URL).toString()
+  const resumeFile = profile.assets?.resumeFile || 'Hemanth_Resume.pdf'
+  const resumeHref = `${import.meta.env.BASE_URL}${resumeFile}`.replace(/\/{2,}/g, '/')
 
   const [theme, setTheme] = useState('light')
   useEffect(() => {

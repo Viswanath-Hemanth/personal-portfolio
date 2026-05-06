@@ -2,8 +2,8 @@
   "hero": {
     "name": "Viswanath Hemanth Chadalawada",
     "titles": [
-      "Gen-AI, RAG & LLM Specialist",
-      "Technical Lead | Full-Stack & Cloud Architect"
+      "Generative-AI Engineer",
+      "Technical Lead | Full-Stack AI and Cloud Architect"
     ],
     "tagline": "Building scalable AI systems, fine-tuning LLMs, and shipping production-grade GenAI products",
     "cta": {
@@ -219,24 +219,39 @@
     "headline": "Casual Gamer when not building AI systems",
     "games": [
       {
-        "title": "Valorant",
-        "caption": "Competitive grind"
+        "title": "Batman: Arkham Knight",
+        "caption": "Dark Knight vibes",
+        "coverImage": "https://cdn.akamai.steamstatic.com/steam/apps/208650/library_600x900_2x.jpg"
       },
       {
-        "title": "Cyberpunk 2077",
-        "caption": "Story + immersion"
+        "title": "God of War Ragnarök",
+        "caption": "Mythic combat",
+        "coverImage": "https://cdn.akamai.steamstatic.com/steam/apps/2322010/library_600x900_2x.jpg"
       },
       {
-        "title": "Minecraft",
-        "caption": "Creative mode"
+        "title": "The Last of Us",
+        "caption": "Survival journey",
+        "coverImage": "https://cdn.akamai.steamstatic.com/steam/apps/1888930/library_600x900_2x.jpg"
       },
       {
-        "title": "Elden Ring",
-        "caption": "Bosses \u2013 never easy"
+        "title": "Uncharted: A thief's end",
+        "caption": "Adventure treasure hunt",
+        "coverImage": "https://cdn.akamai.steamstatic.com/steam/apps/1659420/library_600x900_2x.jpg"
       },
       {
-        "title": "Hades",
-        "caption": "Fast runs"
+        "title": "GTA V",
+        "caption": "Open-world chaos",
+        "coverImage": "https://cdn.akamai.steamstatic.com/steam/apps/271590/library_600x900_2x.jpg"
+      },
+      {
+        "title": "Ghost of Tsushima",
+        "caption": "Samurai honor",
+        "coverImage": "https://cdn.akamai.steamstatic.com/steam/apps/2215430/library_600x900_2x.jpg"
+      },
+      {
+        "title": "Ghost of Yotei",
+        "caption": "Next legend rises",
+        "coverImage": "https://gmedia.playstation.com/is/image/SIEPDC/ghost-of-yotei-packshot-ps5-01-24jul25?$800px--t$"
       }
     ]
   },
