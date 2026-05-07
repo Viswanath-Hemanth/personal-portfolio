@@ -22,10 +22,43 @@ export function SkillsSection(): React.JSX.Element {
             <CardHeader>
               <CardTitle className="text-lg">{group.group}</CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-wrap gap-2">
-              {group.items.map((item) => (
-                <Badge key={item}>{item}</Badge>
-              ))}
+            <CardContent>
+              {group.cloud ? (
+                <div className="space-y-5">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">AWS</p>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {group.cloud.aws.map((item) => (
+                        <Badge key={item}>{item}</Badge>
+                      ))}
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">GCP</p>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      {group.cloud.gcp.map((item) => (
+                        <Badge key={item}>{item}</Badge>
+                      ))}
+                    </div>
+                  </div>
+                  {group.cloud.other?.length ? (
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Other</p>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {group.cloud.other.map((item) => (
+                          <Badge key={item}>{item}</Badge>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+              ) : (
+                <div className="flex flex-wrap gap-2">
+                  {(group.items ?? []).map((item) => (
+                    <Badge key={item}>{item}</Badge>
+                  ))}
+                </div>
+              )}
             </CardContent>
           </Card>
         ))}

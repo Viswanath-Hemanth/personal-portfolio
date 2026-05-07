@@ -7,9 +7,19 @@ export interface ExperienceItem {
   leadership?: string[];
 }
 
+/** Optional structured layout for cloud provider pills (AWS / GCP / other). */
+export interface SkillCloudSubsections {
+  aws: string[];
+  gcp: string[];
+  /** e.g. Docker, cross-cloud tooling */
+  other?: string[];
+}
+
 export interface SkillGroup {
   group: string;
-  items: string[];
+  /** Flat chips when not using `cloud`. */
+  items?: string[];
+  cloud?: SkillCloudSubsections;
 }
 
 export interface ProjectItem {
@@ -154,7 +164,24 @@ export const profile: PortfolioProfile = {
     { group: "Frontend", items: ["React.js", "Next.js", "Redux"] },
     {
       group: "Cloud & DevOps",
-      items: ["AWS: Lambda, S3, EC2, SageMaker, API Gateway, Step Functions", "GCP", "Docker"],
+      cloud: {
+        aws: [
+          "Lambda",
+          "S3",
+          "EC2",
+          "SageMaker",
+          "API Gateway",
+          "Step Functions",
+          "EventBridge",
+          "IAM",
+          "SES",
+          "RDS",
+          "Amplify",
+          "Secrets Manager",
+        ],
+        gcp: ["BigQuery (GBQ)", "Vertex AI", "Cloud Storage", "Cloud Run", "IAM", "Pub/Sub"],
+        other: ["Docker"],
+      },
     },
     { group: "Databases", items: ["MySQL", "PostgreSQL", "Neo4j", "Weaviate", "ChromaDB"] },
     { group: "MLOps", items: ["Model deployment", "Monitoring", "CI/CD"] },
@@ -197,6 +224,11 @@ export const profile: PortfolioProfile = {
       { title: "Uncharted: A thief's end", caption: "Adventure treasure hunt", coverImage: "https://cdn.akamai.steamstatic.com/steam/apps/1659420/library_600x900_2x.jpg" },
       { title: "GTA V", caption: "Open-world chaos", coverImage: "https://cdn.akamai.steamstatic.com/steam/apps/271590/library_600x900_2x.jpg" },
       { title: "Ghost of Tsushima", caption: "Samurai honor", coverImage: "https://cdn.akamai.steamstatic.com/steam/apps/2215430/library_600x900_2x.jpg" },
+      {
+        title: "Sleeping Dogs: Definitive Edition",
+        caption: "Hong Kong undercover action",
+        coverImage: "https://cdn.akamai.steamstatic.com/steam/apps/307690/library_600x900_2x.jpg",
+      },
       { title: "Ghost of Yotei", caption: "Next legend rises", coverImage: "https://gmedia.playstation.com/is/image/SIEPDC/ghost-of-yotei-packshot-ps5-01-24jul25?$800px--t$" },
     ],
   },
