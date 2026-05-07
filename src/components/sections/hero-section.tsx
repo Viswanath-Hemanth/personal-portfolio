@@ -27,7 +27,7 @@ export function HeroSection(): React.JSX.Element {
   );
 
   return (
-    <section className="relative overflow-hidden pb-10 pt-14 sm:pb-14 sm:pt-20">
+    <section className="relative overflow-hidden pb-8 pt-14 sm:pb-12 sm:pt-20">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.2),_transparent_45%)]" />
       <div className="relative mx-auto flex w-full max-w-6xl flex-col gap-6 px-6">
         <div className="flex items-start justify-between gap-6">

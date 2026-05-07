@@ -1,10 +1,8 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { Link2, Mail, MapPin, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
-import { profile } from "@/content/profile";
 import { SectionHeading } from "@/components/section-heading";
 import { SectionShell } from "@/components/section-shell";
 import { Button } from "@/components/ui/button";
@@ -18,7 +16,6 @@ const IS_PLACEHOLDER_ENDPOINT = FORMSPREE_ENDPOINT.includes("your-form-id");
 export function ContactSection(): React.JSX.Element {
   const [submitState, setSubmitState] = useState<SubmitState>("idle");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const contact = profile.contact;
 
   async function onSubmit(event: FormEvent<HTMLFormElement>): Promise<void> {
     event.preventDefault();
@@ -40,13 +37,13 @@ export function ContactSection(): React.JSX.Element {
         body: formData,
       });
       const payload: unknown = await response.json().catch(() => null);
-      const ok =
-        response.ok &&
+      const hasExplicitFailure =
         payload !== null &&
         typeof payload === "object" &&
-        "ok" in payload &&
-        (payload as { ok?: boolean }).ok === true;
-      if (!ok) {
+        "errors" in payload &&
+        Array.isArray((payload as { errors?: unknown[] }).errors) &&
+        (payload as { errors?: unknown[] }).errors!.length > 0;
+      if (!response.ok || hasExplicitFailure) {
         throw new Error("Formspree rejected the submission");
       }
       event.currentTarget.reset();
@@ -65,31 +62,8 @@ export function ContactSection(): React.JSX.Element {
         title="Let's build reliable AI systems together"
         subtitle="Use the form for project discussions, consulting, or architecture support."
       />
-      <motion.div className="grid gap-6 lg:grid-cols-5" initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-        <Card className="lg:col-span-2">
-          <CardHeader>
-            <CardTitle>Direct Reach</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4 text-sm text-slate-700 dark:text-slate-200">
-            <p className="flex items-center gap-2">
-              <Phone className="h-4 w-4" /> <a href={`tel:${contact.phone.replace(/\s+/g, "")}`}>{contact.phone}</a>
-            </p>
-            <p className="flex items-center gap-2">
-              <Mail className="h-4 w-4" /> <a href={`mailto:${contact.email}`}>{contact.email}</a>
-            </p>
-            <p className="flex items-center gap-2">
-              <Link2 className="h-4 w-4" />{" "}
-              <a href={contact.linkedinUrl} target="_blank" rel="noreferrer">
-                {contact.linkedinUrl.replace("https://", "")}
-              </a>
-            </p>
-            <p className="flex items-center gap-2">
-              <MapPin className="h-4 w-4" /> {contact.location}
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card className="lg:col-span-3">
+      <motion.div initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+        <Card>
           <CardHeader>
             <CardTitle>Send a message</CardTitle>
           </CardHeader>
