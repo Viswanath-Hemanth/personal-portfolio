@@ -151,7 +151,7 @@ export const profile: PortfolioProfile = {
     { group: "Gen AI / AI", items: ["LLMs: Llama, Mistral, GPT, BERT, T5, Gemma", "RAG", "Fine-tuning (PEFT, Unsloth)", "NLP pipelines"] },
     { group: "Deep Learning", items: ["PyTorch", "TensorFlow", "Hugging Face"] },
     { group: "Backend", items: ["Python", "FastAPI", "Flask"] },
-    { group: "Frontend", items: ["React.js", "Redux"] },
+    { group: "Frontend", items: ["React.js", "Next.js", "Redux"] },
     {
       group: "Cloud & DevOps",
       items: ["AWS: Lambda, S3, EC2, SageMaker, API Gateway, Step Functions", "GCP", "Docker"],
