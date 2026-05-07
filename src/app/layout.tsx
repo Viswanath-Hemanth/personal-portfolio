@@ -3,10 +3,15 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Hemanth | Generative AI Engineer",
+  title: "Viswanath Hemanth",
   description: "Portfolio of Viswanath Hemanth Chadalawada - Generative AI Engineer and Technical Lead.",
+  icons: {
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   openGraph: {
-    title: "Hemanth | Generative AI Engineer",
+    title: "Viswanath Hemanth",
     description: "Building scalable AI systems, fine-tuning LLMs, and shipping production-grade products.",
     type: "website",
   },
