@@ -90,7 +90,7 @@ export const profile: PortfolioProfile = {
     },
   },
   about: {
-    lead: "Technical Lead with ~4 years experience in AI + Full Stack, leading 15+ engineers end-to-end from ML foundations to GenAI specialization.",
+    lead: "Technical Lead with 4+ years experience in AI + Full Stack, leading 15+ engineers end-to-end from ML foundations to GenAI specialization.",
     expertise: ["LLM Fine-tuning", "RAG Systems", "NLP Pipelines", "Cloud-native AI deployments"],
     storyBullets: ["From ML foundations to GenAI specialization", "From developer to system builder to team leader"],
     achievements: [
@@ -224,11 +224,7 @@ export const profile: PortfolioProfile = {
       { title: "Uncharted: A thief's end", caption: "Adventure treasure hunt", coverImage: "https://cdn.akamai.steamstatic.com/steam/apps/1659420/library_600x900_2x.jpg" },
       { title: "GTA V", caption: "Open-world chaos", coverImage: "https://cdn.akamai.steamstatic.com/steam/apps/271590/library_600x900_2x.jpg" },
       { title: "Ghost of Tsushima", caption: "Samurai honor", coverImage: "https://cdn.akamai.steamstatic.com/steam/apps/2215430/library_600x900_2x.jpg" },
-      {
-        title: "Sleeping Dogs: Definitive Edition",
-        caption: "Hong Kong undercover action",
-        coverImage: "https://cdn.akamai.steamstatic.com/steam/apps/307690/library_600x900_2x.jpg",
-      },
+      { title: "Sleeping Dogs: Definitive Edition", caption: "Hong Kong undercover action", coverImage: "https://cdn.akamai.steamstatic.com/steam/apps/307690/library_600x900_2x.jpg" },
       { title: "Ghost of Yotei", caption: "Next legend rises", coverImage: "https://gmedia.playstation.com/is/image/SIEPDC/ghost-of-yotei-packshot-ps5-01-24jul25?$800px--t$" },
     ],
   },

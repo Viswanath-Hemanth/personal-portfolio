@@ -3,8 +3,9 @@ import { expect, test } from "@playwright/test";
 test("portfolio loads, navigates sections, toggles theme, and submits contact form", async ({ page }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { name: "Generative-AI Engineer" })).toBeVisible();
-  await page.getByRole("button", { name: "Toggle theme" }).click();
   await expect(page.locator("html")).toHaveClass(/dark/);
+  await page.getByRole("button", { name: "Toggle theme" }).click();
+  await expect(page.locator("html")).not.toHaveClass("dark");
 
   await page.getByRole("button", { name: "Contact", exact: true }).click();
   await expect

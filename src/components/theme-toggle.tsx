@@ -1,23 +1,46 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 import { MoonStar, Sun } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
 type Theme = "light" | "dark";
 
+const THEME_STORAGE_KEY = "theme";
+const THEME_CHANGE_EVENT = "portfolio-theme";
+
+function subscribe(onStoreChange: () => void): () => void {
+  const handler = (): void => {
+    onStoreChange();
+  };
+  window.addEventListener("storage", handler);
+  window.addEventListener(THEME_CHANGE_EVENT, handler);
+  return () => {
+    window.removeEventListener("storage", handler);
+    window.removeEventListener(THEME_CHANGE_EVENT, handler);
+  };
+}
+
+function getSnapshot(): Theme {
+  return window.localStorage.getItem(THEME_STORAGE_KEY) === "light" ? "light" : "dark";
+}
+
+function getServerSnapshot(): Theme {
+  return "dark";
+}
+
 export function ThemeToggle(): React.JSX.Element {
-  const [theme, setTheme] = useState<Theme>("light");
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
-    window.localStorage.setItem("theme", theme);
   }, [theme]);
 
   function toggleTheme(): void {
     const nextTheme: Theme = theme === "dark" ? "light" : "dark";
-    setTheme(nextTheme);
+    window.localStorage.setItem(THEME_STORAGE_KEY, nextTheme);
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
   }
 
   return (

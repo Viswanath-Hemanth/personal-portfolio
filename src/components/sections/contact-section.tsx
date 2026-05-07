@@ -32,14 +32,23 @@ export function ContactSection(): React.JSX.Element {
         setSubmitState("success");
         return;
       }
-      await fetch(FORMSPREE_ENDPOINT, {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        mode: "no-cors",
         headers: {
           Accept: "application/json",
         },
         body: formData,
       });
+      const payload: unknown = await response.json().catch(() => null);
+      const ok =
+        response.ok &&
+        payload !== null &&
+        typeof payload === "object" &&
+        "ok" in payload &&
+        (payload as { ok?: boolean }).ok === true;
+      if (!ok) {
+        throw new Error("Formspree rejected the submission");
+      }
       event.currentTarget.reset();
       setSubmitState("success");
     } catch {
@@ -85,6 +94,19 @@ export function ContactSection(): React.JSX.Element {
             <CardTitle>Send a message</CardTitle>
           </CardHeader>
           <CardContent>
+            {IS_PLACEHOLDER_ENDPOINT ? (
+              <p className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:border-amber-900/60 dark:bg-amber-950/40 dark:text-amber-100">
+                Demo mode: submissions are not emailed until you set{" "}
+                <code className="rounded bg-amber-100 px-1 py-0.5 font-mono text-[0.7rem] dark:bg-amber-900/50">
+                  NEXT_PUBLIC_FORMSPREE_ENDPOINT
+                </code>{" "}
+                in{" "}
+                <code className="rounded bg-amber-100 px-1 py-0.5 font-mono text-[0.7rem] dark:bg-amber-900/50">
+                  .env.local
+                </code>
+                .
+              </p>
+            ) : null}
             <form className="space-y-4" onSubmit={onSubmit}>
               <input
                 type="text"
