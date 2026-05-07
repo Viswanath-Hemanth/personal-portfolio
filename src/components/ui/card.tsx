@@ -1,0 +1,26 @@
+import * as React from "react";
+
+import { cn } from "@/lib/cn";
+
+function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element {
+  return (
+    <div
+      className={cn("rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900", className)}
+      {...props}
+    />
+  );
+}
+
+function CardHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element {
+  return <div className={cn("space-y-1.5 p-6", className)} {...props} />;
+}
+
+function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>): React.JSX.Element {
+  return <h3 className={cn("text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50", className)} {...props} />;
+}
+
+function CardContent({ className, ...props }: React.HTMLAttributes<HTMLDivElement>): React.JSX.Element {
+  return <div className={cn("p-6 pt-0", className)} {...props} />;
+}
+
+export { Card, CardContent, CardHeader, CardTitle };
